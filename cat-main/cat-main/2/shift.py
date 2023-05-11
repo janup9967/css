@@ -44,4 +44,11 @@ text = encrypt_text(plaintext,n)
 print("Encoded Text is : " + text)
 print("Decoded Text is : " + dencrypt_text(text,n))
 
+# output
+# Enter the Text Message: cryptography
+# Enter Shift value: 5
+# Plain Text is : cryptography
+# Shift pattern is : 5
+# Encoded Text is : hwduytlwfumd
+# Decoded Text is : cryptography
 
