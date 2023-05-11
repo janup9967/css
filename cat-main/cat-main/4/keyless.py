@@ -81,3 +81,8 @@ print("Encode Text: ",encryptRailFence(text, n))
 
 print("Decode Text: ",decryptRailFence(encrypt_message,n))
 
+# output
+# Enter the message: cryptography
+# Enter the key: 3
+# Encode Text:  ctarporpyygh
+# Decode Text:  cryptography
