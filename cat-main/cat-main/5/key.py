@@ -48,3 +48,11 @@ while size>0 :
     size -=1
   
 print("Plain text: " + encrypt(txt, s))
+
+
+# output:
+# Cipher text: cryptography
+# Enter key size: 2
+# Key: 1
+# Key: 2
+# Plain text: cytgahrporpy
