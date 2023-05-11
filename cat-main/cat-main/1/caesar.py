@@ -45,4 +45,9 @@ text = encrypt_text(plaintext,n)
 print("Encoded Text is : " + text)
 print("Decoded Text is : " + dencrypt_text(text,n))
 
+# output
+# Plain Text is : cystography
+# Shift pattern is : 3
+# Encoded Text is : fbvwrjudskb
+# Decoded Text is : cystography
 
