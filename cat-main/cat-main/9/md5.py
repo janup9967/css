@@ -60,3 +60,10 @@ if __name__ == '__main__':
     message = input() 
     md5(message) 
     hash_value(message)
+    
+    
+# output
+# Enter the message to be hashed: 
+# cryptography
+# Hash Value:  ad3d78f4959ef02a324d00ff99546a60
+# Hash value using hashlib:  e0d00b9f337d357c6faa2f8ceae4a60d
