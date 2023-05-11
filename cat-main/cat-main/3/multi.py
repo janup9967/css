@@ -1,43 +1,42 @@
-from sympy import mod_inverse
-import math
-
-def multiplicative_cypher(text,mode,key):
-    char_dict={}
-    cipher_message = ''
-    for i in range(26):
-         char_dict[chr(ord('a') + i)]=i
-    key_list=list(char_dict.keys())
-    inv_char_dict = dict(zip(char_dict.values(),char_dict.keys()))
-    
-    if mode == 'encrypt':
-        if math.gcd( 26,key) == 1:
-            for char in text:
-                if char in key_list:
-                    new_index=(char_dict[char]*key)%26
-                    cipher_message=cipher_message+inv_char_dict[new_index]
-                else:
-                    cipher_message=cipher_message+char
+def encrypt(message, key):
+    ciphertext = ''
+    for char in message:
+        if char.isalpha():
+            # convert the character to its numeric value (A=0, B=1, etc.)
+            num = ord(char.upper()) - ord('A')
+            # apply the encryption formula and convert back to a letter
+            num = (num * key) % 26
+            ciphertext += chr(num + ord('A'))
         else:
-            print('invalid key selected')
-            
-        return cipher_message         
-        
-    if mode == 'decrypt':
-        mult_inv=mod_inverse(key, 26)
-        for char in text:
-            if char in key_list:
-                new_index=(char_dict[char]*mult_inv)%26
-                cipher_message=cipher_message+inv_char_dict[new_index]
-            else:
-                cipher_message=cipher_message+char
-    
-    return cipher_message
+            ciphertext += char
+    return ciphertext
 
+def decrypt(ciphertext, key):
+    plaintext = ''
+    # find the modular multiplicative inverse of the key
+    inv_key = pow(key, -1, 26)
+    for char in ciphertext:
+        if char.isalpha():
+            # convert the character to its numeric value (A=0, B=1, etc.)
+            num = ord(char.upper()) - ord('A')
+            # apply the decryption formula and convert back to a letter
+            num = (num * inv_key) % 26
+            plaintext += chr(num + ord('A'))
+        else:
+            plaintext += char
+    return plaintext
 
-text = input("Enter the message: ")
-n = int(input("Enter the key: "))
-encrypt_message=multiplicative_cypher(text,'encrypt',n)
-print("Encoded Text is : ",encrypt_message)
+message = 'HELLO WORLD'
+key = 7
 
-encrypt_message=multiplicative_cypher(encrypt_message,'decrypt',n)
-print("Decoded Text is : ",encrypt_message)
+# encrypt the message
+ciphertext = encrypt(message, key)
+print('Ciphertext:', ciphertext)
+
+# decrypt the ciphertext
+plaintext = decrypt(ciphertext, key)
+print('Plaintext:', plaintext)
+
+# Output
+# Ciphertext: XCZZU YUPZV
+# Plaintext: HELLO WORLD
