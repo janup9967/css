@@ -33,3 +33,11 @@ print("Encrypted data = ", int(c))
 m = pow(c, d)
 m = math.fmod(m, n)
 print("Original Message Sent = ", int(m))
+
+# output
+# Enter the value of p: 13
+# Enter the value of q: 11
+# Enter the message: 7
+# Message data =  7
+# Encrypted data =  6
+# Original Message Sent =  56
